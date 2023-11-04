@@ -1,0 +1,6 @@
+.line{
+ width:2px;
+ height: 100%;
+ background-color: red;
+ box-shadow: 1px 10px 8px red;
+}
