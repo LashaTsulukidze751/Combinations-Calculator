@@ -15,12 +15,32 @@
 .inputs{
     position: relative;
     height: 120px;
-    width: 130px;
+    min-width: 130px;
+    width: 30%;
+}
+.mistake{
+    width: 70%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: left;
 }
 .wrapper p{
-    font-size: 100px;
+    font-size: 90px;
+    letter-spacing: 43px;
     text-align: center;
+    z-index: 0;
+    
 }
+.wrapper h2{
+    font-size: 90px;
+}
+
+.wrapper h3{
+    
+    font-size: 20px;
+}
+
 .wrapper div{
     display: flex;
 }
@@ -34,31 +54,41 @@ select {
 }
 .inputs input{
     position: absolute;
+    z-index: 2;
     height: 25px;
     width:40px;
-    left:66px;
-
+    left:33%;
 }
 button{
     position: absolute;
     border:2px solid rgb(255, 0, 0);
     border-radius: 5px;
     left:10px;
-    bottom:2px;
+    bottom: -8px;
     width:100px;
     transition: all 0.4s;
 }
-button:hover{
+button:hover  {
     background-color: red;
     box-shadow: 0px 0px 10px red;
     color:white;
 }
 #m{
-    top: 17px;
+    top: 30px;
 }
-#m:focus-within{
-    border: 2px solid red;
-}
+
 #n{
-    top:72px
+    top:83px
+}
+@keyframes glow{
+    0%{
+        text-shadow: 0px 0px 0px red;
+    }
+    50%{
+        text-shadow: 0px 0px 10px red;
+    }
+    100%{
+        text-shadow: 0px 0px 0px red;
+    }
+    
 }

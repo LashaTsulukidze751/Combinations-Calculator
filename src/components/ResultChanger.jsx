@@ -10,13 +10,17 @@ function ResultChanger() {
     const [mnishvneli, setMnishvneli] = useState('');
     const [CorA, setCorA] = useState('')
     const [showInput, setShowInput] = useState(false);
+    const [anim, setAnim] = useState(false)
+    const hendleanim = (event) =>{
+        setAnim(true);
+    }
 
     const handleSelectedValue = (event) => {
         if (event.target.value === 'jufdebaWR' || event.target.value === 'jufdebaNR') {
             setCorA('C=');
-        } else if(event.target.value === 'wyobaWR' || event.target.value === 'wyobaNR'){
+        } else if (event.target.value === 'wyobaWR' || event.target.value === 'wyobaNR') {
             setCorA('A=');
-        }   else{
+        } else {
             setCorA('?=');
         }
         setSelectedValue(event.target.value);
@@ -50,12 +54,12 @@ function ResultChanger() {
     }
 
     function jufdebaWR() {
-        
         if (n && m) {
             const USG = gcd(factorial(Number(n) + Number(m) - 1), factorial(Number(m) - 1) * factorial((Number(n) + Number(m) - 1) - (Number(m) - 1)));
             setMricxveli(factorial(Number(n) + Number(m) - 1) / USG);
             setMnishvneli(factorial(Number(m) - 1) * factorial((Number(n) + Number(m) - 1) - (Number(m) - 1)) / USG);
         }
+
 
     }
 
@@ -84,6 +88,9 @@ function ResultChanger() {
         }
         setCorA("A=");
     }
+    const glowing = {
+            animation: 'glow 2s  infinite linear',
+    }
 
     return (
         <div className='main'>
@@ -100,24 +107,28 @@ function ResultChanger() {
                 <div className="wrapper">
                     <div>
                         <div className="inputs">
-                        <input type='number' value={m} onChange={handleMChange} id='m' placeholder='m'/>
-                        <p>{CorA ? CorA : "?="}</p>
-                        <input type='number' value={n} onChange={handleNChange} id='n' placeholder='n' />
+                            <input type='number' value={m} onChange={handleMChange} id='m' placeholder='m' />
+                            <p >{CorA ? CorA : "?="}</p>
+                            <input type='number' value={n} onChange={handleNChange} id='n' placeholder='n' />
+                        </div>
+
+                        {showResult && (m > n ? <div className="mistake"><h3>Uncorrect Values,<br /> <span className="red">n</span> Must Be Greater Than m</h3></div> : (
+                            mnishvneli === 1 ? (
+                                <div className="mistake"><h2 id="mricxveli">{mricxveli}</h2></div>
+
+                            ) : (
+                                <div className="mistake">
+                                    <div className="wiladi">
+                                        <h2 id="mricxveli">{mricxveli}</h2>
+                                        <hr />
+                                        <h2 id="mnishvneli">{mnishvneli}</h2>
+                                    </div></div>
+
+                            )
+                        ))}
                     </div>
-                    {showResult && (
-                        mnishvneli === 1 ? (
-                            <p id="mricxveli">{mricxveli}</p>
-                        ) : (
-                            <div className="wiladi">
-                                <p id="mricxveli">{mricxveli}</p>
-                                <hr />
-                                <p id="mnishvneli">{mnishvneli}</p>
-                            </div>
-                        )
-                    )}
-                    </div>
-                    <button type="submit" onClick={handleShowResult}>Calculate</button>
-                    
+                    <button type="submit" onClick={handleShowResult} onMouseOver={hendleanim}>Calculate</button>
+
                 </div>}
 
         </div>
