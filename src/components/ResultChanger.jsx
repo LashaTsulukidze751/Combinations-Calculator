@@ -10,10 +10,6 @@ function ResultChanger() {
     const [mnishvneli, setMnishvneli] = useState('');
     const [CorA, setCorA] = useState('')
     const [showInput, setShowInput] = useState(false);
-    const [anim, setAnim] = useState(false)
-    const hendleanim = (event) =>{
-        setAnim(true);
-    }
 
     const handleSelectedValue = (event) => {
         if (event.target.value === 'jufdebaWR' || event.target.value === 'jufdebaNR') {
@@ -52,15 +48,12 @@ function ResultChanger() {
         }
         setShowResult(true);
     }
-
     function jufdebaWR() {
         if (n && m) {
             const USG = gcd(factorial(Number(n) + Number(m) - 1), factorial(Number(m) - 1) * factorial((Number(n) + Number(m) - 1) - (Number(m) - 1)));
             setMricxveli(factorial(Number(n) + Number(m) - 1) / USG);
             setMnishvneli(factorial(Number(m) - 1) * factorial((Number(n) + Number(m) - 1) - (Number(m) - 1)) / USG);
         }
-
-
     }
 
     function jufdebaNR() {
@@ -69,7 +62,6 @@ function ResultChanger() {
             setMricxveli(factorial(Number(n)) / USG);
             setMnishvneli((factorial(m) * factorial(Number(n) - Number(m))) / USG);
         }
-        setCorA("C=");
     }
 
     function wyobaNR() {
@@ -78,7 +70,6 @@ function ResultChanger() {
             setMricxveli(factorial(Number(n)) / USG);
             setMnishvneli((factorial(Number(n) - Number(m))) / USG);
         }
-        setCorA("A=");
     }
 
     function wyobaWR() {
@@ -86,10 +77,6 @@ function ResultChanger() {
             setMricxveli(Math.pow(Number(n), Number(m)));
             setMnishvneli(1);
         }
-        setCorA("A=");
-    }
-    const glowing = {
-            animation: 'glow 2s  infinite linear',
     }
 
     return (
@@ -108,26 +95,29 @@ function ResultChanger() {
                     <div>
                         <div className="inputs">
                             <input type='number' value={m} onChange={handleMChange} id='m' placeholder='m' />
-                            <p >{CorA ? CorA : "?="}</p>
-                            <input type='number' value={n} onChange={handleNChange} id='n' placeholder='n' />
+                            <p className='glow'>{CorA ? CorA : "?="}</p>
+                            <input type='text' value={n} onChange={handleNChange} id='n' placeholder='n' />
                         </div>
-
-                        {showResult && (m > n ? <div className="mistake"><h3>Uncorrect Values,<br /> <span className="red">n</span> Must Be Greater Than m</h3></div> : (
-                            mnishvneli === 1 ? (
-                                <div className="mistake"><h2 id="mricxveli">{mricxveli}</h2></div>
-
+                        {showResult && (m > n ?
+                            <div className="mistake">
+                                <h3>Uncorrect Values,<br /> <span className="red">n</span> Must Be Greater Than <span className="red">m</span></h3>
+                            </div>
+                            : (mnishvneli === 1 ? (
+                                <div className={"mistake"}><h2 id="mricxveli">{mricxveli}</h2></div>
                             ) : (
                                 <div className="mistake">
                                     <div className="wiladi">
                                         <h2 id="mricxveli">{mricxveli}</h2>
                                         <hr />
                                         <h2 id="mnishvneli">{mnishvneli}</h2>
-                                    </div></div>
-
+                                    </div>
+                                </div>
                             )
-                        ))}
+                            )
+                        )
+                        }
                     </div>
-                    <button type="submit" onClick={handleShowResult} onMouseOver={hendleanim}>Calculate</button>
+                    <button type="submit" onClick={handleShowResult} >Calculate</button>
 
                 </div>}
 

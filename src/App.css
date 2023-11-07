@@ -8,6 +8,7 @@
   --nightbgc:rgb(31,31,31);
 }
 .app{
+  position: relative;
   display: flex;
   justify-content: space-between;
   width:450px;
